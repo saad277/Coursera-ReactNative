@@ -9,6 +9,9 @@ import { connect } from 'react-redux'
 
 import { baseUrl } from '../shared/baseUrl'
 
+
+import { Loading } from './LoadingComponent'
+
 class Menu extends Component {
 
     constructor(props) {
@@ -33,17 +36,25 @@ class Menu extends Component {
         );
     };
 
+
+    renderMenu = () => {
+
+
+        return (<FlatList
+            data={this.props.dishes.dishes}
+            renderItem={this.renderMenuItem}
+            keyExtractor={item => item.id.toString()}
+        />)
+
+    }
+
     render() {
 
 
 
-        return (
-            <FlatList
-                data={this.props.dishes}
-                renderItem={this.renderMenuItem}
-                keyExtractor={item => item.id.toString()}
-            />
-        );
+        return this.props.dishes.isLoading ? <Loading /> : this.renderMenu()
+
+
 
     }
 }
@@ -55,7 +66,7 @@ const mapStateToProps = (state) => {
 
     return {
 
-        dishes: state.dishes.dishes
+        dishes: state.dishes
     }
 
 }

@@ -12,6 +12,8 @@ import { connect } from 'react-redux'
 
 import { baseUrl } from '../shared/baseUrl'
 
+import { Loading } from "./LoadingComponent"
+
 function RenderItem(props) {
 
     const item = props.item;
@@ -53,16 +55,21 @@ class Home extends Component {
         };
     }
 
-    render() {
-
+    renderHome = () => {
 
         return (
             <ScrollView>
-                <RenderItem item={this.props.dishes.filter((dish) => dish.featured)[0]} />
-                <RenderItem item={this.props.promotions.filter((promo) => promo.featured)[0]} />
-                <RenderItem item={this.props.leaders.filter((leader) => leader.featured)[0]} />
+                <RenderItem item={this.props.dishes.dishes.filter((dish) => dish.featured)[0]} />
+                <RenderItem item={this.props.promotions.promos.filter((promo) => promo.featured)[0]} />
+                <RenderItem item={this.props.leaders.leaders.filter((leader) => leader.featured)[0]} />
             </ScrollView>
         )
+    }
+
+    render() {
+
+
+        return this.props.dishes.isLoading ? <Loading /> : this.renderHome()
 
 
     }
@@ -74,10 +81,10 @@ const mapStateToProps = (state) => {
 
     return {
 
-        dishes: state.dishes.dishes,
-        comments: state.dishes.dishes,
-        promotions: state.promotions.promos,
-        leaders: state.leaders.leaders
+        dishes: state.dishes,
+        comments: state.dishes,
+        promotions: state.promotions,
+        leaders: state.leaders
     }
 
 
