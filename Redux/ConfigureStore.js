@@ -10,6 +10,7 @@ import comments from "./reducers/comments";
 import dishes from './reducers/dishes'
 import promotions from './reducers/promotions'
 import leaders from './reducers/leaders'
+import favorites from './reducers/favorites'
 
 const rootReducer = combineReducers({
 
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
     dishes,
     comments,
     promotions,
-    leaders
+    leaders,
+    favorites
 
 })
 

@@ -9,6 +9,8 @@ import { connect } from 'react-redux'
 
 import { baseUrl } from '../shared/baseUrl'
 
+import { postFavorite } from '../Redux/ActionCreators'
+
 function RenderDish(props) {
 
     const dish = props.dish;
@@ -88,10 +90,7 @@ class Dishdetail extends Component {
 
     markFavorite = (dishId) => {
 
-        this.setState({
-
-            favorites: this.state.favorites.concat(dishId)
-        })
+        this.props.postFavorite(dishId);
 
     }
 
@@ -107,7 +106,7 @@ class Dishdetail extends Component {
         return (
             <ScrollView>
                 <RenderDish dish={this.props.dishes[+dishId]}
-                    favorite={this.state.favorites.some((el) => el == dishId)}
+                    favorite={this.props.favorites.some((el) => el == dishId)}
                     onPress={() => this.markFavorite(dishId)}
                 />
                 <RenderComments comments={this.props.comments} />
@@ -124,10 +123,16 @@ const mapStateToProps = (state) => {
     return {
 
         dishes: state.dishes.dishes,
-        comments: state.comments.comments
+        comments: state.comments.comments,
+        favorites: state.favorites,
     }
 
 
 }
 
-export default connect(mapStateToProps)(Dishdetail);
+const mapDispatchToProps = (dispatch) => ({
+    postFavorite: (dishId) => dispatch(postFavorite(dishId))
+})
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dishdetail);
