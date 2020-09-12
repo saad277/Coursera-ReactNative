@@ -14,6 +14,9 @@ import { createDrawerNavigator, DrawerItems, } from 'react-navigation-drawer'
 import { Icon } from 'react-native-elements'
 
 
+import { connect } from 'react-redux'
+
+import { fetchComments, fetchDishes, fetchLeaders, fetchPromos } from '../Redux/ActionCreators'
 
 const MenuNavigator = createStackNavigator({
 
@@ -102,7 +105,7 @@ const customDrawerContentComponent = (props) => (
                     <Text style={styles.drawerHeaderText}>Ristorante Con Fusion</Text>
                 </View>
             </View>
-        <DrawerItems {...props}/>
+            <DrawerItems {...props} />
         </SafeAreaView>
     </ScrollView>
 );
@@ -205,6 +208,31 @@ const AppContainer = createAppContainer(MainNavigator)
 
 
 
+class Main extends Component {
+
+    componentDidMount() {
+        this.props.fetchDishes();
+        this.props.fetchComments();
+        this.props.fetchPromos();
+        this.props.fetchLeaders();
+    }
 
 
-export default AppContainer;
+    render() {
+
+        return (
+            <AppContainer />
+        )
+    }
+
+}
+
+const mapDispatchToProps = (dispatch) => ({
+    fetchDishes: () => dispatch(fetchDishes()),
+    fetchComments: () => dispatch(fetchComments()),
+    fetchPromos: () => dispatch(fetchPromos()),
+    fetchLeaders: () => dispatch(fetchLeaders()),
+})
+
+
+export default connect(null, mapDispatchToProps)(Main);

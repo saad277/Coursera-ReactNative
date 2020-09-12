@@ -5,6 +5,10 @@ import { DISHES } from '../shared/dishes'
 import { COMMENTS } from '../shared/comments'
 import { FlatList } from 'react-native-gesture-handler';
 
+import { connect } from 'react-redux'
+
+import { baseUrl } from '../shared/baseUrl'
+
 function RenderDish(props) {
 
     const dish = props.dish;
@@ -13,7 +17,7 @@ function RenderDish(props) {
         return (
             <Card
                 featuredTitle={dish.name}
-                image={require('./images/uthappizza.png')}>
+                image={{ uri: baseUrl + dish.image }}>
                 <Text style={{ margin: 10 }}>
                     {dish.description}
                 </Text>
@@ -102,11 +106,11 @@ class Dishdetail extends Component {
 
         return (
             <ScrollView>
-                <RenderDish dish={this.state.dishes[+dishId]}
+                <RenderDish dish={this.props.dishes[+dishId]}
                     favorite={this.state.favorites.some((el) => el == dishId)}
                     onPress={() => this.markFavorite(dishId)}
                 />
-                <RenderComments comments={comment} />
+                <RenderComments comments={this.props.comments} />
             </ScrollView>
 
         );
@@ -114,4 +118,16 @@ class Dishdetail extends Component {
 
 }
 
-export default Dishdetail;
+
+const mapStateToProps = (state) => {
+
+    return {
+
+        dishes: state.dishes.dishes,
+        comments: state.comments.comments
+    }
+
+
+}
+
+export default connect(mapStateToProps)(Dishdetail);

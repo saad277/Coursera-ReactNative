@@ -1,17 +1,21 @@
 import React, { Component, useState } from 'react';
-import { Text, View, StyleSheet,ScrollView } from 'react-native';
+import { Text, View, StyleSheet, ScrollView } from 'react-native';
 import { Card, Header, ListItem, Avatar } from 'react-native-elements';
 
 import { LEADERS } from '../shared/leaders.js'
 
 
+import { connect } from 'react-redux'
+
+import { baseUrl } from '../shared/baseUrl'
 
 
 
-const About = () => {
+const About = (props) => {
 
     const [leaders, setLeaders] = useState(LEADERS)
 
+   
 
     return (
 
@@ -31,11 +35,11 @@ const About = () => {
             <Card style={styles.container}>
                 <Card.Title>Corporate Leadership </Card.Title>
                 <Card.Divider />
-                {leaders.map((x) => {
+                {props.leaders.map((x) => {
 
                     return (
                         <ListItem key={x.id} bottomDivider>
-                            <Avatar rounded={true} source={require('./images/alberto.png')} />
+                            <Avatar rounded={true} source={{ uri: baseUrl + item.image }} />
                             <ListItem.Content>
                                 <ListItem.Title>{x.name}</ListItem.Title>
                                 <ListItem.Subtitle>{x.description}</ListItem.Subtitle>
@@ -62,4 +66,19 @@ const styles = StyleSheet.create({
 })
 
 
-export default About;
+
+
+const mapStateToProps = (state) => {
+
+    return {
+
+        leaders: state.leaders.leaders
+
+    }
+
+
+}
+
+
+
+export default connect(mapStateToProps)(About);

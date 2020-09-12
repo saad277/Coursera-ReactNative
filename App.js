@@ -4,9 +4,16 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import Main from './components/MainComponent'
 
+import { Provider } from 'react-redux'
+
+import { ConfigureStore } from './Redux/ConfigureStore'
+
 export default function App() {
   return (
-    <Main />
+    <Provider store={ConfigureStore}>
+      <Main />
+    </Provider>
+
   );
 }
 

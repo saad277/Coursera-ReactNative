@@ -1,7 +1,7 @@
 import * as ActionTypes from './ActionTypes'
 
 import { baseUrl } from '../shared/baseUrl'
-import comments from './reducers/comments'
+
 
 
 export const fetchComments = () => {
@@ -286,7 +286,7 @@ export const leadersLoading = () => {
 
 
 
-export const promosFailed = (errorMessage) => {
+export const leadersFailed = (errorMessage) => {
 
     return {
 

@@ -8,6 +8,10 @@ import { PROMOTIONS } from '../shared/promotions';
 import { LEADERS } from '../shared/leaders';
 
 
+import { connect } from 'react-redux'
+
+import { baseUrl } from '../shared/baseUrl'
+
 function RenderItem(props) {
 
     const item = props.item;
@@ -17,7 +21,7 @@ function RenderItem(props) {
             <Card
                 featuredTitle={item.name}
                 featuredSubtitle={item.designation}
-                image={require('./images/uthappizza.png')}>
+                image={{ uri: baseUrl + item.image }}>
                 <Text
                     style={{ margin: 10 }}>
                     {item.description}</Text>
@@ -54,9 +58,9 @@ class Home extends Component {
 
         return (
             <ScrollView>
-                <RenderItem item={this.state.dishes.filter((dish) => dish.featured)[0]} />
-                <RenderItem item={this.state.promotions.filter((promo) => promo.featured)[0]} />
-                <RenderItem item={this.state.leaders.filter((leader) => leader.featured)[0]} />
+                <RenderItem item={this.props.dishes.filter((dish) => dish.featured)[0]} />
+                <RenderItem item={this.props.promotions.filter((promo) => promo.featured)[0]} />
+                <RenderItem item={this.props.leaders.filter((leader) => leader.featured)[0]} />
             </ScrollView>
         )
 
@@ -65,4 +69,18 @@ class Home extends Component {
 
 }
 
-export default Home;
+
+const mapStateToProps = (state) => {
+
+    return {
+
+        dishes: state.dishes.dishes,
+        comments: state.dishes.dishes,
+        promotions: state.promotions.promos,
+        leaders: state.leaders.leaders
+    }
+
+
+}
+
+export default connect(mapStateToProps)(Home);
