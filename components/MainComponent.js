@@ -4,6 +4,7 @@ import DishDetail from './DishDetailsComponent'
 import Home from './HomeComponent'
 import Contact from './ContactComponent'
 import About from './AboutComponent'
+import Reservation from "./ReservationComponent"
 
 import { View, Platform, Text, StyleSheet, Image, ScrollView, SafeAreaView } from 'react-native';
 
@@ -153,6 +154,21 @@ const MainNavigator = createDrawerNavigator({
                 }
             }
         }
+    },
+    Reservation: {
+        screen: Reservation,
+        navigationOptions: () => {
+            return {
+                title: "Reservation",
+                drawerLabel: "Reservation",
+                drawerIcon: ({ tintColor }) => {
+
+                    return <Icon name="cutlery" type="font-awesome" size={22} color={tintColor} />
+
+                }
+            }
+        }
+
     },
     About: {
         screen: AboutNavigator,
