@@ -51,12 +51,12 @@ export const commentsFailed = (errorMessage) => {
 
 }
 
-export const addComments = (comments) => {
+export const addComments = (comment) => {
 
 
     return {
         type: ActionTypes.ADD_COMMENTS,
-        payload: comments
+        payload: comment
 
     }
 
@@ -326,3 +326,21 @@ export const addFavorite = (dishId) => ({
     type: ActionTypes.ADD_FAVORITE,
     payload: dishId
 });
+
+
+
+
+
+
+export const postComments = (comment) => {
+
+
+    return {
+        type: ActionTypes.POST_COMMENTS,
+        payload: comment
+
+    }
+
+
+}
+

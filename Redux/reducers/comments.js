@@ -8,7 +8,7 @@ import * as ActionTypes from '../ActionTypes'
 const istate = {
 
     isLoading: true,
-    errMessage: null, 
+    errMessage: null,
     comments: []
 }
 
@@ -28,7 +28,7 @@ const comments = (state = istate, action) => {
             }
 
 
-    
+
         case ActionTypes.COMMENTS_FAILED:
 
             return {
@@ -36,6 +36,15 @@ const comments = (state = istate, action) => {
                 isLoading: true,
                 errMessage: action.payload,
                 comments: []
+            }
+
+        case ActionTypes.POST_COMMENTS:
+
+            return {
+                ...state,
+                isLoading: false,
+                errMessage: null,
+                comments: [...state.comments, action.payload]
             }
 
         default:
