@@ -8,10 +8,12 @@ import { Provider } from 'react-redux'
 
 import { ConfigureStore } from './Redux/ConfigureStore'
 
+import Profile from './profile'
+
 export default function App() {
   return (
     <Provider store={ConfigureStore}>
-      <Main />
+      <Profile />
     </Provider>
 
   );

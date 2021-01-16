@@ -1,0 +1,111 @@
+import React, { Component } from 'react'
+import { render } from 'react-dom'
+import { View, Text, StyleSheet, Image, Button } from 'react-native'
+
+
+export default function profile() {
+
+
+    return (
+
+        <View style={style.container}>
+
+            <View style={{ flexDirection: 'row' }}>
+                <Image source={{ uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTr1k1n7Cbuh8uZ7GJriZam08ADoFhvd3AbNQ&usqp=CAU" }}
+                    style={style.Image} />
+                <View style={{ flexDirection: "row", marginTop: 40, marginLeft: 20 }}>
+                    <View style={{ flexDirection: "column" }}>
+                        <Text style={{ fontSize: 20, fontWeight: "bold" }}> Posts </Text>
+                        <Text style={{ fontSize: 17, marginLeft: 5 }}>20k</Text>
+                    </View>
+
+                    <View style={{ flexDirection: "column" }}>
+                        <Text style={{ fontSize: 20, fontWeight: "bold" }}> Following </Text>
+                        <Text style={{ fontSize: 17, marginLeft: 5 }}>20k</Text>
+                    </View>
+
+                    <View style={{ flexDirection: "column" }}>
+                        <Text style={{ fontSize: 20, fontWeight: "bold" }}> Followers</Text>
+                        <Text style={{ fontSize: 17, marginLeft: 5 }}>20k</Text>
+                    </View>
+
+                </View>
+
+
+
+
+            </View>
+
+
+
+            <Text style={{ fontWeight: 'bold', marginVertical: 30, }} onPress={() => { alert('alert') }}>    RIMSHA MEHMOOD</Text>
+            <Text>     SSUETIAN</Text>
+            <Text>     Software Engineer</Text>
+            <Text>     Aries</Text>
+            <Text>     20 April</Text>
+            <Text>     Foodie</Text>
+            <Text>     kuch bhi smj nhi ata</Text>
+
+            <View style={{ flexDirection: "row", justifyContent: "space-evenly", marginVertical: 10 }}>
+
+                <Button title="Follow" color="green"></Button>
+                <Button title="Message" color="blue" style={{ color: "black" }}></Button>
+            </View>
+
+            <View style={{ flexDirection: "column" }}>
+
+                <View style={{ flexDirection: "row", borderColor: "gray", borderTopWidth: 1 }}>
+                    <Image source={{ uri: "https://images.unsplash.com/photo-1593642532400-2682810df593?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" }}
+                        style={{ width: 150, height: 100 }} />
+                    <Image source={{ uri: "https://images.unsplash.com/photo-1593642532400-2682810df593?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" }}
+                        style={{ width: 150, height: 100 }} />
+                    <Image source={{ uri: "https://images.unsplash.com/photo-1593642532400-2682810df593?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" }}
+                        style={{ width: 150, height: 100 }} />
+                </View>
+
+                
+                <View style={{ flexDirection: "row", borderColor: "gray", borderTopWidth: 1 }}>
+                    <Image source={{ uri: "https://images.unsplash.com/photo-1605407108047-1e04b744a2cd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" }}
+                        style={{ width: 150, height: 100 }} />
+                    <Image source={{ uri: "https://images.unsplash.com/photo-1605407108047-1e04b744a2cd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" }}
+                        style={{ width: 150, height: 100 }} />
+                    <Image source={{ uri: "https://images.unsplash.com/photo-1605407108047-1e04b744a2cd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" }}
+                        style={{ width: 150, height: 100 }} />
+                </View>
+
+
+            </View>
+        </View>
+
+    );
+}
+
+
+const style = StyleSheet.create({
+    container: {
+        flex: 1,
+
+    },
+
+
+    Image: {
+
+
+        width: 100,
+        height: 100,
+        marginTop: 30
+
+    },
+    Text: {
+
+        fontWeight: "bold",
+        marginRight: 200,
+
+
+
+
+
+
+    }
+
+})
